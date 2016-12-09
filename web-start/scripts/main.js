@@ -257,6 +257,10 @@ FriendlyChat.prototype.displayMessage = function(key, name, text, picUrl, imageU
   var messageElement = div.querySelector('.message');
   if (text) { // If the message is text.
     messageElement.textContent = text;
+
+      var audio = new Audio('../sound/beep.mp3');
+      audio.play();
+
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
   } else if (imageUri) { // If the message is an image.
