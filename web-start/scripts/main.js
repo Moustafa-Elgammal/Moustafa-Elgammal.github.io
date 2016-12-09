@@ -258,7 +258,7 @@ FriendlyChat.prototype.displayMessage = function(key, name, text, picUrl, imageU
   if (text) { // If the message is text.
     messageElement.textContent = text;
 
-      var audio = new Audio('../sound/beep.mp3');
+      var audio = new Audio('sound/beep.mp3');
       audio.play();
 
     // Replace all line breaks by <br>.
