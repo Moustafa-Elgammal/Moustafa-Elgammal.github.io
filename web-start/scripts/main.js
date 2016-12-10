@@ -90,7 +90,6 @@ FriendlyChat.prototype.saveMessage = function(e) {
         this.messagesRef.push({
             name: currentUser.displayName,
             text: this.messageInput.value,
-            input: "moustafa",
             photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
         }).then(function() {
             // Clear message text field and SEND button state.
@@ -144,7 +143,6 @@ FriendlyChat.prototype.saveImageMessage = function(event) {
             imageUrl: FriendlyChat.LOADING_IMAGE_URL,
             photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
         }).then(function(data) {
-
             // Upload the image to Firebase Storage.
             this.storage.ref(currentUser.uid + '/' + Date.now() + '/' + file.name)
                 .put(file, {contentType: file.type})
