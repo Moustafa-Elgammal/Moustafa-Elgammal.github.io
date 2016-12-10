@@ -72,7 +72,10 @@ FriendlyChat.prototype.loadMessages = function() {
     // Loads the last 12 messages and listen for new ones.
     var setMessage = function(data) {
         var val = data.val();
-        this.displayMessage(data.key, val.name, val.text, val.photoUrl, val.imageUrl);
+        if(( val.user_id && val.user_id  == this.auth.currentUser.uid )|| val.user_id == "bnkseyWDpiZbGwtFTgphHUQ2fr62"){
+            this.displayMessage(data.key, val.name, val.text, val.photoUrl, val.imageUrl);
+        }
+
         if(val.name != this.auth.currentUser.displayName){
             var audio = new Audio('sound/beep.mp3');
             audio.play();
