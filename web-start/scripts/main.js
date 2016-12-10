@@ -73,6 +73,10 @@ FriendlyChat.prototype.loadMessages = function() {
     var setMessage = function(data) {
         var val = data.val();
         this.displayMessage(data.key, val.name, val.text, val.photoUrl, val.imageUrl);
+        if(val.name != this.auth.currentUser.displayName){
+            var audio = new Audio('sound/beep.mp3');
+            audio.play();
+        }
     }.bind(this);
     this.messagesRef.limitToLast(12).on('child_added', setMessage);
     this.messagesRef.limitToLast(12).on('child_changed', setMessage);
@@ -89,7 +93,10 @@ FriendlyChat.prototype.saveMessage = function(e) {
         // Add a new message entry to the Firebase Database.
         this.messagesRef.push({
             name: currentUser.displayName,
+            user_id:currentUser.uid,
+            admin   : "bnkseyWDpiZbGwtFTgphHUQ2fr62",
             text: this.messageInput.value,
+
             photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
         }).then(function() {
             // Clear message text field and SEND button state.
@@ -255,9 +262,6 @@ FriendlyChat.prototype.displayMessage = function(key, name, text, picUrl, imageU
   var messageElement = div.querySelector('.message');
   if (text) { // If the message is text.
     messageElement.textContent = text;
-
-      var audio = new Audio('sound/beep.mp3');
-      audio.play();
 
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
