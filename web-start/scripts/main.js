@@ -74,12 +74,12 @@ FriendlyChat.prototype.loadMessages = function() {
         var val = data.val();
         if(( val.user_id && val.user_id  == this.auth.currentUser.uid )|| val.user_id == "bnkseyWDpiZbGwtFTgphHUQ2fr62"){
             this.displayMessage(data.key, val.name, val.text, val.photoUrl, val.imageUrl);
+            if(val.name != this.auth.currentUser.displayName){
+                var audio = new Audio('sound/beep.mp3');
+                audio.play();
+            }
         }
 
-        if(val.name != this.auth.currentUser.displayName){
-            var audio = new Audio('sound/beep.mp3');
-            audio.play();
-        }
     }.bind(this);
     this.messagesRef.limitToLast(12).on('child_added', setMessage);
     this.messagesRef.limitToLast(12).on('child_changed', setMessage);
