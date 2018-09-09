@@ -14,6 +14,7 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
+    font-family: 'Cousine', monospace;
 }
 
 /*
@@ -287,5 +288,70 @@ textarea {
     h2,
     h3 {
         page-break-after: avoid;
+    }
+}
+
+/*
+ * The magic
+ */
+
+@media screen and (min-width: 800px) {
+
+    /* -------- font rules ------------*/
+    .bold {
+        font-weight: bold;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    /* ---- body magic ----*/
+    /*
+            elements
+     */
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    mark {
+        color: #353735;
+        background-color: rgba(227, 189, 224, 0.39);
+    }
+
+    ul {
+        margin-bottom: 20px;
+    }
+
+    li {
+        margin-bottom: 11px;
+    }
+
+    /**
+            classes
+     */
+    .container {
+        margin-left: 0%;
+        padding-right: 1px;
+    }
+
+    .element {
+        margin-left: 10px;
+        text-align: justify;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .social {
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .circle {
+        border-radius: 50%;
+        margin-right: 12px;
     }
 }
