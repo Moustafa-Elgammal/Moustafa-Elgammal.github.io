@@ -317,7 +317,7 @@ textarea {
 
     mark {
         color: #353735;
-        background-color: rgba(227, 189, 224, 0.39);
+        background-color: rgba(227, 189, 224, 0);
     }
 
     ul {
@@ -348,6 +348,17 @@ textarea {
     .social {
         font-weight: bold;
         font-style: italic;
+    }
+
+    .social:after
+    {
+        margin-left: -8px;
+        content: ',';
+    }
+
+    li > .social:last-child:after
+    {
+        content: '.';
     }
 
     .circle {
