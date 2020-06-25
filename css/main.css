@@ -100,20 +100,6 @@ textarea {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -332,17 +318,11 @@ textarea {
             classes
      */
     .container {
-        margin-left: 0%;
         padding-right: 1px;
     }
 
     .element {
-        margin-left: 10px;
-        text-align: justify;
-    }
-
-    .right {
-        float: right;
+        text-align: center;
     }
 
     .social {
