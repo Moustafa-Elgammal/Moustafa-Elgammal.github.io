@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="">
-<head>
+<head id="head">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Moustafa Elgammal</title>
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/app.css">
+
 </head>
 <body>
 <div class="container" style="text-align: center;">
@@ -27,8 +28,17 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
             href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
+
+        <a id="light" class="mode-button" href="#" onclick="myFunction()">
+            <i id="light-mode-icon"></i>
+        </a>
+
+        <a id="dark" class="mode-button" href="#" style="display: none" onclick="myFunction()">
+            <i id="dark-mode-icon"></i>
+        </a>
+
         <div class="element" id="home">
-            <img class="circle" width="60" height="60" src="img/avatar.jpg">
+            <img class="circle" width="60" height="60" src="img/avatar.jpg" alt="avatar">
             <h1>
                 Moustafa Mohammed Elgammal
             </h1>
@@ -62,9 +72,9 @@
             <a class="social" href="#quotes">
                 <mark>Quotes</mark>
             </a>
-            <a class="social" href="#tales">
-                <mark>Tales</mark>
-            </a>
+<!--            <a class="social" href="#tales">-->
+<!--                <mark>Tales</mark>-->
+<!--            </a>-->
         </div>
 
 
@@ -75,10 +85,7 @@
                 <span class="bold">Bio...</span>
 
                 <p>
-                    This is Moustafa Elgammal (Hilal), Computer and System Engineering fresh graduated (2018).
-                    Software Engineering has all my attention, so I always have a passion to keep in touch with
-                    the new technologies and the advanced
-                    topics of the field for example (Big data and Machine learning).
+                    This is Moustafa Elgammal, Software Engineer and  Web Developer.
                 </p>
 
             </div>
@@ -101,10 +108,10 @@
 
                     <br/>
 
-                    <a class="social" target="_blank" href="#+0020120405219">
+                    <a class="social" target="_blank" href="#">
                         <mark>+0020120405219</mark>
                     </a>
-                    <a class="social" target="_blank" href="#+0020106627792">
+                    <a class="social" target="_blank" href="#">
                         <mark>+0020106627792</mark>
                     </a>
                 </p>
@@ -160,7 +167,7 @@
 
                 <p>
                     "If the Human Brain Were So Simple That We Could Understand It, We Would Be So Simple That
-                    We Couldn’t, !" -
+                    We Couldn't, !" -
                     <i><a href="https://en.wikipedia.org/wiki/Emerson_Pugh" target="_blank">Emerson M. Pugh</a></i>.
                 </p>
 
@@ -177,6 +184,16 @@
 
     </div>
 </div>
-</div>
+
+<script>
+
+    function myFunction() {
+        let body = document.body;
+        let mark = document.mark;
+        let a = document.a;
+        body.classList.toggle("dark-mode");
+    }
+
+</script>
 </body>
 </html>

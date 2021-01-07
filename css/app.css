@@ -1,3 +1,23 @@
 div {
     align-content: center;
 }
+
+.mode-button{
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+}
+
+#light::before {
+    content: '🌓';
+}
+
+#dark::before {
+    content: '🌗️';
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
