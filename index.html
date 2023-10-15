@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="">
+<head id="head">
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Moustafa Elgammal</title>
+    <meta content="Software solutions developer and engineer, with passion to build and deploy well designed, clean and scalable software services. I’m always up to date with the new technologies and tools which provide suitable performance needed."
+          name="description">
+    <meta content="Moustafa Mohammed Elgammal, Software Developer, php, laravel, mysql, back-end, linux, javascript, angular"
+          name="keywords">
+    <link href="site.webmanifest" rel="manifest">
+    <link href="icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Cousine:400,700,700i" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="text-align: center;">
+    <div style="width: 90%; margin: 0 auto">
+        <div class="clearfix"></div>
+        <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
+                href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+        <a class="mode-button" href="#" id="light" onclick="toggleMode()"></a>
+        <div class="element" id="home">
+            <img alt="avatar" class="circle" height="60" src="img/avatar.jpg" width="60">
+            <h1>
+                Moustafa Mohammed Elgammal
+            </h1>
+        </div>
+        <div class="element">
+            <a class="social" href="#home">
+                <mark>Home</mark>
+            </a>
+            <a class="social" href="#bio">
+                <mark>Bio</mark>
+            </a>
+            <a class="social" href="#education">
+                <mark>Education</mark>
+            </a>
+            <a class="social" href="#contacts">
+                <mark>Contact Me</mark>
+            </a>
+            <a class="social" href="#web-links">
+                <mark>Web Links</mark>
+            </a>
+            <a class="social" href="#spare-time">
+                <mark>Spare Time</mark>
+            </a>
+            <a class="social" href="#quotes">
+                <mark>Quotes</mark>
+            </a>
+        </div>
+
+        <hr/>
+
+        <div class="element my-container">
+            <div id="bio">
+                <span class="bold">Bio...</span>
+                <p>
+                    This is Moustafa Mohammed, Software Developer.
+                </p>
+            </div>
+            <div id="education">
+                <span class="bold">Education...</span>
+                <div>
+                    <p>Computer and Systems Engineering dep, Faculty of Engineering - Zagazig University, B. Eng.,
+                        2018
+                    </p>
+                    <p>Big Data Science and Engineering, National Telecommunications institute, Diploma, 2019</p>
+                </div>
+            </div>
+            <div id="contacts">
+                <span class="bold">Contact Me...</span>
+                <p>
+                    <a class="social" href="mailto:moustafa@elgx.me" target="_blank">
+                        <mark>moustafa@elgx.me</mark>
+                    </a>
+                    <br/>
+                </p>
+            </div>
+            <div id="web-links">
+                <span class="bold">Web Links...</span>
+                <div>
+                    <a class="social" href="https://github.com/Moustafa-Elgammal" target="_blank">
+                        <mark>GitHub</mark>
+                    </a>
+                    <a class="social" href="https://www.linkedin.com/in/moustafa-elgammal/" target="_blank">
+                        <mark>LinkedIn</mark>
+                    </a>
+                </div>
+            </div>
+            <div id="spare-time">
+                <br>
+                <span class="bold">Spare Time...</span>
+                <div>
+                    <p> Reading, Music & Movies.</p>
+                    <p> Photographing.</p>
+                    <p> Travelling.</p>
+                    <p> Night Watcher.</p>
+                </div>
+            </div>
+            <div id="quotes">
+                <span class="bold">Quotes...</span>
+                <p>
+                    "These violent delights have violent ends." -
+                    <i><a href="https://en.wikipedia.org/wiki/William_Shakespeare" target="_blank">William
+                        Shakespeare</a></i>.
+                </p>
+                <p>
+                    "You can go a long way with a smile. You can go a lot farther with a smile and a gun." -
+                    <i><a href="https://en.wikipedia.org/wiki/Al_Capone" target="_blank">Al Capone.</a></i>.
+                </p>
+                <p>
+                    "The music is about the sounds themselves, not who or what made them." -
+                    <i><a href="https://www.edx.org/bio/stephen-whittington" target="_blank">Stephen
+                        Whittington</a></i>.
+                </p>
+                <p>
+                    "In C, there's no magic. If you want something to be somewhere in memory, you have to put it
+                    there yourself." -
+                    <i>
+                        <a href="https://en.wikipedia.org/wiki/David_J._Malan" target="_blank">
+                            David J. Malan
+                        </a>
+                    </i>
+                </p>
+                <p>
+                    "If the Human Brain Were So Simple That We Could Understand It, We Would Be So Simple That
+                    We Couldn't, !" -
+                    <i><a href="https://en.wikipedia.org/wiki/Emerson_Pugh" target="_blank">Emerson M. Pugh</a></i>.
+                </p>
+                <p>
+                    "You used to be one thing. Now, you're something else. We all have our own problems. Our own
+                    issues. Our own demons!" -
+                    <i><a href="https://www.imdb.com/title/tt1270797/characters/nm0362766?ref_=tt_cl_t1"
+                          target="_blank">Eddie Brock</a></i>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    // init check the visitor local storage
+    if (localStorage.getItem('mode') === 'dark') {
+
+        document.body.classList.add("dark-mode");
+
+        Array.from(document.getElementsByTagName('a')).forEach((element) => {
+            element.classList.add('dark-mode')
+        });
+
+        Array.from(document.getElementsByTagName('mark')).forEach((element) => {
+            element.classList.add('dark-mode')
+        });
+
+        document.getElementById('light').id = 'dark';
+    }
+
+    function toggleMode() {
+        // save the mode status
+        let mode = localStorage.getItem('mode') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('mode', mode);
+
+        // toggle the icon id
+        mode === 'dark' ? document.getElementById('light').id = 'dark' : document.getElementById('dark').id = 'light';
+
+        // toggle needed elements
+        document.body.classList.toggle("dark-mode");
+        Array.from(document.getElementsByTagName('a')).forEach((element) => {
+            element.classList.toggle('dark-mode')
+        });
+        Array.from(document.getElementsByTagName('mark')).forEach((element) => {
+            element.classList.toggle('dark-mode')
+        });
+    }
+</script>
+</body>
+</html>
