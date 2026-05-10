@@ -22,17 +22,41 @@
   --font-sans: 'Cousine', monospace;
   --border-radius-lg: 8px;
   --border-radius-md: 6px;
+
+  /* blog component vars */
+  --warning-bg: #faeeda;
+  --warning-border: #fac775;
+  --warning-label: #854f0b;
+  --warning-text: #633806;
+  --blog-accent: #378add;
 }
 
 body.dark {
+  /* base palette */
   --bg: #141414;
   --bg-subtle: #1c1c1c;
   --text: #e8e8e8;
-  --text-muted: #999;
+  --text-muted: #999999;
   --accent: #60a5fa;
   --border: #2a2a2a;
-  --border-subtle: #222;
+  --border-subtle: #222222;
+
+  /* compat vars — explicitly redeclared so nested var() chains
+     never resolve against the :root light-mode values */
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #999999;
+  --color-text-info: #60a5fa;
+  --color-background-primary: #141414;
+  --color-background-secondary: #1c1c1c;
+  --color-border-tertiary: #2a2a2a;
   --color-border-secondary: #3a3a3a;
+
+  /* blog component vars */
+  --warning-bg: #2a1f0e;
+  --warning-border: #7a4a10;
+  --warning-label: #f0b060;
+  --warning-text: #c89060;
+  --blog-accent: #60a5fa;
 }
 
 /* ── Base ── */
@@ -329,11 +353,3 @@ blockquote cite {
 
 .back-link:hover { color: var(--accent); }
 
-/* ── Blog article dark mode overrides ── */
-body.dark .warning-box {
-  background: #2a1f0e;
-  border-color: #7a4a10;
-}
-
-body.dark .warning-box .wb-label { color: #f0b060; }
-body.dark .warning-box p { color: #c89060; }
