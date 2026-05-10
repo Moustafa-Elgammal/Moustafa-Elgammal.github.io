@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 // Run from repo root: node scripts/scan-blogs.js
-// Scans blog/*.html, reads metadata, writes blog/index.json (newest first)
-// and regenerates sitemap.xml.
+// Scans blog/*.html, reads metadata, writes blog/index.json (newest first).
 
 const fs = require('fs');
 const path = require('path');
