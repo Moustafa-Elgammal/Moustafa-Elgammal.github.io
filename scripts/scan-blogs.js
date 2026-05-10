@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Run from repo root: node scripts/scan-blogs.js
-// Scans blog/*.html, reads metadata, writes blog/index.json (newest first).
+// Scans blog/*.html, reads metadata, writes blog/index.json (newest first)
+// and regenerates sitemap.xml.
 
 const fs = require('fs');
 const path = require('path');
@@ -59,6 +60,37 @@ const articles = files
     return 0;
   });
 
+// ── blog/index.json ──────────────────────────────────────────────────────────
 fs.writeFileSync(output, JSON.stringify(articles, null, 2) + '\n');
 console.log(`Wrote ${articles.length} article(s) to blog/index.json`);
 articles.forEach(a => console.log(`  [${a.dateIso || '?'}] ${a.file} — ${a.title}`));
+
+// ── sitemap.xml ───────────────────────────────────────────────────────────────
+const SITE = 'https://elgx.me';
+const today = new Date().toISOString().slice(0, 10);
+
+const sitemapUrls = [
+  { loc: `${SITE}/`,            lastmod: today,   priority: '1.0' },
+  { loc: `${SITE}/blog/`,       lastmod: today,   priority: '0.9' },
+  ...articles.map(a => ({
+    loc:      `${SITE}/blog/${a.file}`,
+    lastmod:  a.dateIso || today,
+    priority: '0.8',
+  })),
+];
+
+const sitemapXml =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  sitemapUrls.map(u =>
+    `  <url>\n` +
+    `    <loc>${u.loc}</loc>\n` +
+    `    <lastmod>${u.lastmod}</lastmod>\n` +
+    `    <priority>${u.priority}</priority>\n` +
+    `  </url>`
+  ).join('\n') +
+  `\n</urlset>\n`;
+
+const sitemapPath = path.join(__dirname, '../sitemap.xml');
+fs.writeFileSync(sitemapPath, sitemapXml);
+console.log(`Updated sitemap.xml (${sitemapUrls.length} URLs)`);

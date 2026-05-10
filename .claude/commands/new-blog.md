@@ -132,6 +132,45 @@ Do NOT add any `<style>` block — all CSS lives in `app.css`.
   <meta name="blog:ai-generated" content="true">
   <meta name="blog:ai-tool"      content="Claude">
   <meta name="blog:license"      content="CC BY 4.0">
+
+  <!-- SEO -->
+  <meta name="author" content="Moustafa Elgammal">
+  <link rel="canonical" href="https://elgx.me/blog/{{ SLUG }}.html">
+
+  <!-- Open Graph (Facebook · LinkedIn) -->
+  <meta property="og:type"        content="article">
+  <meta property="og:site_name"   content="Moustafa Elgammal">
+  <meta property="og:url"         content="https://elgx.me/blog/{{ SLUG }}.html">
+  <meta property="og:title"       content="{{ ARTICLE TITLE }}">
+  <meta property="og:description" content="{{ ONE-SENTENCE SUMMARY (≤155 chars) }}">
+  <meta property="og:image"       content="https://elgx.me/img/avatar.jpg">
+  <meta property="og:image:alt"   content="Moustafa Elgammal">
+  <meta property="article:published_time" content="{{ YYYY-MM-DD }}">
+  <meta property="article:author" content="https://elgx.me">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="{{ ARTICLE TITLE }}">
+  <meta name="twitter:description" content="{{ ONE-SENTENCE SUMMARY (≤155 chars) }}">
+  <meta name="twitter:image"       content="https://elgx.me/img/avatar.jpg">
+  <meta name="twitter:image:alt"   content="Moustafa Elgammal">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ ARTICLE TITLE }}",
+    "description": "{{ ONE-SENTENCE SUMMARY (≤155 chars) }}",
+    "author": { "@type": "Person", "name": "Moustafa Elgammal", "url": "https://elgx.me" },
+    "publisher": { "@type": "Person", "name": "Moustafa Elgammal", "url": "https://elgx.me" },
+    "datePublished": "{{ YYYY-MM-DD }}",
+    "image": "https://elgx.me/img/avatar.jpg",
+    "url": "https://elgx.me/blog/{{ SLUG }}.html",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://elgx.me/blog/{{ SLUG }}.html" }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/normalize.css">
@@ -366,10 +405,14 @@ The `<title>` tag must end with ` &mdash; Moustafa Elgammal`
 After writing the file, verify before reporting done:
 
 - [ ] Slug is lowercase with underscores, ends in `.html`
-- [ ] All 8 meta tags present and populated
+- [ ] All 8 `blog:*` meta tags present and populated
 - [ ] `<title>` ends with ` &mdash; Moustafa Elgammal`
 - [ ] `blog:date-iso` uses real today's date (`YYYY-MM-DD`)
 - [ ] No `<style>` block in the HTML (all CSS comes from `app.css`)
+- [ ] SEO: `<meta name="author">` and `<link rel="canonical">` present
+- [ ] OG: all 8 `og:` / `article:` properties present, `og:title` is the plain title (no site suffix)
+- [ ] Twitter: all 5 `twitter:` tags present
+- [ ] JSON-LD `<script type="application/ld+json">` block present with correct slug/date/title
 - [ ] `ai-disclosure` block present
 - [ ] Hero quote present and inside `.blog-hero`
 - [ ] At least 4 `principle-card` items
@@ -377,5 +420,5 @@ After writing the file, verify before reporting done:
 - [ ] 2–3 `callout` blocks total
 - [ ] `final-cta` block present
 - [ ] `article-license-footer` present with correct year
-- [ ] `bash scripts/scan-blogs.sh` ran successfully
+- [ ] `bash scripts/scan-blogs.sh` ran successfully (also regenerates `sitemap.xml`)
 - [ ] `blog/index.json` updated (confirm article appears)
