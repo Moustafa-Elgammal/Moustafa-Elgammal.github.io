@@ -1,0 +1,63 @@
+================================================================================
+ Site Code License (MIT)
+ Applies to: CSS, JavaScript, HTML structure (everything except /blog content)
+================================================================================
+
+Copyright (c) 2026 Moustafa Elgammal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+================================================================================
+ Blog Content License (CC BY 4.0)
+ Applies to: all articles in /blog
+================================================================================
+
+Copyright (c) 2026 Moustafa Elgammal
+
+This content is licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+
+You are free to:
+  Share  — copy and redistribute the material in any medium or format
+  Adapt  — remix, transform, and build upon the material for any purpose,
+           even commercially
+
+Under the following terms:
+  Attribution — You must give appropriate credit to Moustafa Elgammal,
+                provide a link to https://elgx.me, include a link to this
+                license, and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/
+
+
+================================================================================
+ AI Content Disclosure
+================================================================================
+
+Some articles on this site are written with the assistance of AI tools
+(such as Claude by Anthropic). Each AI-assisted article carries a visible
+disclosure and the following machine-readable meta tags in its <head>:
+
+  <meta name="blog:ai-generated" content="true">
+  <meta name="blog:ai-tool"      content="Claude">
+
+All AI-generated content has been reviewed and is published under the
+responsibility of the author. The CC BY 4.0 license above applies equally
+to AI-assisted and human-written articles.

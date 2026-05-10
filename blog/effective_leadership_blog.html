@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stop Giving Directions from the Back Seat &mdash; Moustafa Elgammal</title>
+  <meta name="description" content="What effective leadership in software development actually looks like — and why most organizations get it dangerously wrong.">
+  <meta name="blog:category" content="Engineering leadership">
+  <meta name="blog:date" content="May 2026">
+  <meta name="blog:date-iso" content="2026-05-01">
+  <meta name="blog:readtime"      content="10 min read">
+  <meta name="blog:ai-generated"  content="true">
+  <meta name="blog:ai-tool"       content="Claude">
+  <meta name="blog:license"       content="CC BY 4.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/app.css">
+  <style>
+    .blog-wrap {
+      font-family: 'Source Serif 4', serif;
+      color: var(--color-text-primary);
+      max-width: 680px;
+      padding: 0 0 3rem;
+      line-height: 1.8;
+    }
+    .blog-tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-info);
+      font-family: var(--font-sans);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      color: var(--color-text-primary);
+      margin: 0 0 1rem;
+    }
+    .blog-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--color-text-secondary);
+      margin: 0 0 1.5rem;
+      line-height: 1.5;
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+    }
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-border-secondary);
+      flex-shrink: 0;
+    }
+    .blog-hero {
+      background: #0C447C;
+      border-radius: var(--border-radius-lg);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 30%;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: #B5D4F4;
+      line-height: 1.5;
+      margin: 0 0 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-attr {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: #85B7EB;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    .blog-body p {
+      font-size: 17px;
+      margin: 0 0 1.5rem;
+      color: var(--color-text-primary);
+    }
+    .blog-h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--color-text-primary);
+      margin: 2.5rem 0 1rem;
+      line-height: 1.3;
+    }
+    .blog-h3 {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-info);
+      margin: 2rem 0 0.75rem;
+    }
+    .callout {
+      border-left: 3px solid #378ADD;
+      padding: 1rem 1.25rem;
+      background: var(--color-background-secondary);
+      border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+      margin: 1.75rem 0;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--color-text-secondary);
+    }
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 1.5rem 0 2rem;
+    }
+    .principle-card {
+      background: var(--color-background-primary);
+      border: 0.5px solid var(--color-border-tertiary);
+      border-radius: var(--border-radius-lg);
+      padding: 1rem 1.1rem;
+    }
+    .principle-card .pc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #378ADD;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .principle-card .pc-title {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .principle-card .pc-body {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+    .warning-box {
+      background: #FAEEDA;
+      border: 0.5px solid #FAC775;
+      border-radius: var(--border-radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .warning-box .wb-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #854F0B;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .warning-box p {
+      font-size: 15px;
+      color: #633806;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .final-cta {
+      background: var(--color-background-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 1.75rem 2rem;
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+    .final-cta .fc-head {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.6rem;
+    }
+    .final-cta p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      margin: 0;
+      line-height: 1.7;
+    }
+    .blog-divider {
+      border: none;
+      border-top: 0.5px solid var(--color-border-tertiary);
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <button class="mode-btn" onclick="toggleMode()" aria-label="Toggle dark mode"></button>
+
+  <div class="site-wrap">
+
+    <div class="blog-page-header">
+      <a class="back-link" href="../index.html">&larr; Moustafa Elgammal</a>
+    </div>
+
+    <div class="blog-wrap">
+      <div class="blog-tag">Engineering leadership &middot; 10 min read</div>
+      <h1 class="blog-title">Stop Giving Directions from the Back Seat</h1>
+      <p class="blog-subtitle">What effective leadership in software development actually looks like &mdash; and why most organizations get it dangerously wrong.</p>
+      <div class="blog-meta">
+        <span>May 2026</span>
+        <span class="meta-dot"></span>
+        <span>~2,400 words</span>
+        <span class="meta-dot"></span>
+        <span>Leadership &middot; Engineering</span>
+      </div>
+
+      <div class="ai-disclosure">
+        <span class="ai-disclosure-icon">⚡</span>
+        <span>Generated with <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> (Anthropic) &middot; Reviewed and published by the author</span>
+      </div>
+
+      <div class="blog-hero">
+        <p class="hero-quote">"You can't effectively lead developers if you aren't &mdash; or haven't been &mdash; a developer yourself."</p>
+        <p class="hero-attr">A principle too many organizations still resist</p>
+      </div>
+
+      <div class="blog-body">
+        <p>Picture a familiar corporate scene. A stand-up meeting. A product team mid-sprint, wrestling with a gnarly distributed-systems bug. The engineering manager &mdash; two years removed from writing any code &mdash; opens the floor: "Can't we just fix it by Friday? The business really needs this."</p>
+
+        <p>The engineers exchange glances. The silence stretches. Someone politely explains, for the fourth time this quarter, why that particular deadline is physically impossible given the nature of the problem. The manager nods, says "let's find a way," and closes the meeting. Nothing changes. The team's trust erodes a little further.</p>
+
+        <p>This is the backseat-leader problem. It's endemic, it's expensive, and it stems from a stubborn myth: that strong "people skills" are a complete substitute for technical fluency when leading technical teams.</p>
+
+        <p>They are not. And the evidence &mdash; from team retention numbers to product quality &mdash; keeps making the case.</p>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">The Myth of the Pure People-Leader in Tech</h2>
+
+        <p>The idea has a seductive logic to it. Leadership, the argument goes, is fundamentally about humans. It's about motivation, alignment, communication, and clearing blockers. Technical depth is what the individual contributors are for. The manager's job is to create the conditions for great work, not to do the great work themselves.</p>
+
+        <p>In many industries, that's a reasonable framework. A great operations leader at a logistics company doesn't need to drive trucks. A marketing director doesn't need to hand-code landing pages.</p>
+
+        <p>Software development is different. Here's why: the substance of the work and the complexity of its decisions are inseparable from the medium. You cannot make meaningful judgments about scope, risk, architecture trade-offs, or technical debt without understanding the domain. Not superficially &mdash; deeply.</p>
+
+        <div class="callout">When a non-technical leader insists a feature is "simple" or a bug is "just a quick fix," they aren't being demanding. They're revealing the limits of what they can see. And those invisible limits cost real time, real money, and real morale.</div>
+
+        <p>Nicklas Millard, a senior software engineer, put it bluntly in a widely shared essay: leaders need to be hands-on, every day. The argument isn't that managers should be the best coder on the team. It's that a leader who cannot engage with the technical reality of what their team does is operating blind &mdash; and asking everyone else to follow them in that blindness.</p>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">What "Backseat Leadership" Actually Costs</h2>
+
+        <p>The costs of technically disengaged leadership are rarely captured in a single dramatic failure. They accumulate quietly, in the texture of day-to-day team life.</p>
+
+        <h3 class="blog-h3">Estimation chaos</h3>
+        <p>When leaders don't understand the work, sprint planning becomes theater. Estimates are ignored or overridden based on business pressure rather than technical reality. The team learns, quickly, that their professional judgment doesn't carry weight. They stop giving honest estimates and start gaming the process to protect themselves.</p>
+
+        <h3 class="blog-h3">Invisible technical debt</h3>
+        <p>Technical debt is one of the most consequential long-term forces in any engineering organization. But it's nearly impossible to explain to a leader who's never felt its weight. Without a leader who can advocate internally for paying it down &mdash; who can translate "we need a refactoring sprint" into business terms a CFO will respect &mdash; debt accumulates until it becomes a crisis. By that point, it costs ten times as much to address.</p>
+
+        <h3 class="blog-h3">Talent atrophy and attrition</h3>
+        <p>Skilled engineers have options. They are keenly aware when their manager cannot evaluate their work, cannot protect them from irrational demands, and cannot recognize the difference between excellent and mediocre output. Strong engineers leave. Weaker ones, sometimes, stay. Over time, this creates a self-reinforcing mediocrity spiral that is very difficult to reverse.</p>
+
+        <div class="warning-box">
+          <div class="wb-label">&#9888; The compounding risk</div>
+          <p>A technically disengaged leader creates a feedback vacuum. Without someone who can read the code, the architecture decisions, the test coverage &mdash; and have an informed view &mdash; teams can drift for months in costly directions before anyone notices. The later the correction, the higher the cost.</p>
+        </div>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">The Case for the Technical Leader as Individual Contributor</h2>
+
+        <p>The strongest engineering leaders &mdash; those who consistently build high-performing, high-retention teams &mdash; tend to share a counterintuitive quality: they don't fully step back from the code.</p>
+
+        <p>This doesn't mean they're top of the commit leaderboard. It means they write code often enough to stay calibrated. They review pull requests not just to approve them but to genuinely understand the choices being made. They attend technical design sessions as participants, not observers. They can &mdash; when needed &mdash; sit down and work through a problem with an engineer, not just assign it and check in at the next stand-up.</p>
+
+        <p>This is what it means to be a technical leader who is also an individual contributor (IC). The IC role isn't about volume of output. It's about maintaining the hands-on understanding that makes every other leadership function &mdash; mentoring, architecture review, cross-functional communication, prioritization &mdash; more effective.</p>
+
+        <div class="callout">The best tech leads don't choose between leading and building. They understand that doing the latter makes them dramatically better at the former.</div>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">Six Principles of Effective Technical Leadership</h2>
+
+        <div class="principle-grid">
+          <div class="principle-card">
+            <div class="pc-num">01</div>
+            <div class="pc-title">Stay technically current</div>
+            <div class="pc-body">Write, review, and discuss real code regularly. Even a few hours a week preserves the intuition that makes you credible.</div>
+          </div>
+          <div class="principle-card">
+            <div class="pc-num">02</div>
+            <div class="pc-title">Protect estimation integrity</div>
+            <div class="pc-body">Never override your team's technical estimates with business pressure. Translate business needs; don't corrupt the technical process.</div>
+          </div>
+          <div class="principle-card">
+            <div class="pc-num">03</div>
+            <div class="pc-title">Advocate for the invisible work</div>
+            <div class="pc-body">Testing, refactoring, documentation, and performance work rarely have product champions. Be theirs, or they won't happen.</div>
+          </div>
+          <div class="principle-card">
+            <div class="pc-num">04</div>
+            <div class="pc-title">Build psychological safety</div>
+            <div class="pc-body">Engineers need to surface bad news, voice disagreement, and admit uncertainty without fear. That culture starts with you.</div>
+          </div>
+          <div class="principle-card">
+            <div class="pc-num">05</div>
+            <div class="pc-title">Bridge, don't buffer</div>
+            <div class="pc-body">Your job isn't to filter information between business and engineering &mdash; it's to translate it faithfully in both directions.</div>
+          </div>
+          <div class="principle-card">
+            <div class="pc-num">06</div>
+            <div class="pc-title">Invest in senior engineers</div>
+            <div class="pc-body">The strongest ROI in any engineering org is growing senior ICs. Sponsor their growth, get out of their way, and amplify their influence.</div>
+          </div>
+        </div>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">Agile Didn't Solve This &mdash; It Made It Easier to Pretend It Did</h2>
+
+        <p>The Agile movement, for all its genuine contributions to software delivery, introduced a generation of "servant-leader" rhetoric that sometimes enabled the very problem it claimed to solve. When leadership is reframed purely as removing blockers and facilitating ceremonies, it becomes easy to be technically disengaged and still feel useful.</p>
+
+        <p>Stand-ups, retrospectives, sprint reviews &mdash; these rituals create a comforting structure of activity that can mask a fundamental absence of technical engagement. A Scrum Master who has never written production code can run a textbook sprint ceremony and still be completely unable to tell whether the team is building the right thing, the right way, at a sustainable pace.</p>
+
+        <p>Agile ceremonies are necessary but not sufficient. What fills the gap between process structure and genuine leadership is technical credibility &mdash; the kind that only comes from sustained engagement with the actual work.</p>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">What This Looks Like in Practice</h2>
+
+        <p>Concretely, effective technical leadership in a software team looks something like this:</p>
+
+        <p>The leader participates in architecture discussions with opinions, not just open-ended questions. They can read a pull request and offer substantive feedback &mdash; not just "LGTM." They have an informed view on build-versus-buy decisions, not because they ran a spreadsheet, but because they've lived through the consequences of both. They know what a good test suite looks like versus a fragile one. They recognize the difference between a team moving fast and a team accumulating risk.</p>
+
+        <p>This doesn't require being the most senior engineer on the team. It requires sustained engagement. The leader who spends two hours a week genuinely doing technical work &mdash; not reviewing PowerPoints, but writing or reviewing actual code &mdash; will, over time, maintain the intuition that makes them effective. The leader who stops entirely will, equally over time, lose it. And the team will know before the leader does.</p>
+
+        <div class="callout">One of the clearest signals of leadership health in an engineering team is whether engineers believe their manager could do their job if needed. Not would &mdash; could. That belief, or its absence, shapes every dynamic that follows.</div>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">A Note on Soft Skills</h2>
+
+        <p>None of this is an argument against interpersonal skill. Empathy, communication, conflict resolution, coaching &mdash; these matter enormously. A technically brilliant leader who is dismissive, poor at feedback, or unable to navigate organizational politics will still fail, often spectacularly.</p>
+
+        <p>The point is that soft skills are necessary but not sufficient. The most effective engineering leaders are technically credible and humanly skilled. They understand the code and the people who write it. They can debate a technical trade-off and, in the same meeting, help a junior developer feel safe raising a concern.</p>
+
+        <p>The binary &mdash; "technical" versus "people" leader &mdash; is a false one. It exists largely because organizations find it convenient to promote technically weak people into leadership roles and justify the decision with soft-skill rhetoric. It's worth asking, each time you see that pattern, who it actually serves.</p>
+
+        <hr class="blog-divider">
+
+        <h2 class="blog-h2">Hiring and Promoting Technical Leaders: What to Look For</h2>
+
+        <p>If you're building or evaluating an engineering organization, the key signal isn't years of management experience. It's evidence of sustained technical engagement after moving into leadership. Ask candidates: what was the last piece of code they wrote? What's the last pull request they reviewed substantively? What technical decision in the past six months are they most uncertain about?</p>
+
+        <p>Candidates who can answer these questions concretely &mdash; with specificity, with appropriate humility &mdash; are the ones most likely to lead effectively. Those who gesture vaguely at "strategy" and "alignment" and immediately redirect to org charts may be telling you, accurately, that they have stopped doing the work that makes them qualified to lead people who do it.</p>
+
+        <p>Promote the engineers who make the people around them better. Promote the tech leads who bring problems upward with clarity rather than filtering them out of existence. Promote the people who are visibly respected by the senior engineers on the team &mdash; because senior engineers, more than anyone else in the organization, can tell the difference.</p>
+      </div>
+
+      <div class="final-cta">
+        <div class="fc-head">The bottom line</div>
+        <p>Great engineering leadership is not a choice between technical depth and human skill. It is, at its best, a deliberate cultivation of both &mdash; a refusal to use the language of leadership as cover for disengaging from the work that makes the team possible. Lead from the front. Stay in the code. Your team will feel the difference, even if they never say so directly.</p>
+      </div>
+    <div class="article-license-footer">
+      <span class="license-badge">CC BY 4.0</span>
+      <span>&copy; 2026 Moustafa Elgammal &middot;
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0</a>
+        &middot; <a href="../LICENSE.txt">Full license</a>
+      </span>
+    </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    if (localStorage.getItem('mode') === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    function toggleMode() {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('mode', isDark ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>

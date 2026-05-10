@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Moustafa Elgammal</title>
+  <meta name="description" content="Software developer and engineer. Writing about engineering, leadership, and building things.">
+  <meta name="keywords" content="Moustafa Elgammal, Software Developer, backend, engineering, leadership">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <button class="mode-btn" onclick="toggleMode()" aria-label="Toggle dark mode"></button>
+
+  <div class="site-wrap">
+
+    <header class="site-header">
+      <img class="avatar" src="img/avatar.jpg" alt="Moustafa Elgammal" width="56" height="56">
+      <div>
+        <h1 class="site-name">Moustafa Elgammal</h1>
+        <p class="site-role">Software Developer &amp; Engineer</p>
+      </div>
+    </header>
+
+    <nav class="site-nav">
+      <a href="#bio">Bio</a>
+      <a href="#writing">Writing</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <a href="#quotes">Quotes</a>
+    </nav>
+
+    <hr class="divider">
+
+    <main>
+
+      <section id="bio" class="section">
+        <h2 class="section-label">Bio</h2>
+        <p>Software solutions developer and engineer, with a passion to build and deploy well-designed, clean, and scalable software services.</p>
+        <div class="link-row">
+          <a href="https://github.com/Moustafa-Elgammal" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/moustafa-elgammal/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:moustafa@elgx.me">moustafa@elgx.me</a>
+        </div>
+      </section>
+
+      <section id="writing" class="section">
+        <h2 class="section-label">Writing</h2>
+        <div id="articles-list" class="articles-list"></div>
+      </section>
+
+      <section id="education" class="section">
+        <h2 class="section-label">Education</h2>
+        <ul class="plain-list">
+          <li>B.Eng. Computer &amp; Systems Engineering &mdash; Faculty of Engineering, Zagazig University, 2018</li>
+          <li>Diploma, Big Data Science &amp; Engineering &mdash; National Telecommunications Institute, 2019</li>
+        </ul>
+      </section>
+
+      <section id="contact" class="section">
+        <h2 class="section-label">Contact</h2>
+        <div class="link-row">
+          <a href="mailto:moustafa@elgx.me">moustafa@elgx.me</a>
+        </div>
+      </section>
+
+      <section id="quotes" class="section">
+        <h2 class="section-label">Quotes</h2>
+        <blockquote>"These violent delights have violent ends." &mdash; <cite><a href="https://en.wikipedia.org/wiki/William_Shakespeare" target="_blank" rel="noopener">William Shakespeare</a></cite></blockquote>
+        <blockquote>"You can go a long way with a smile. You can go a lot farther with a smile and a gun." &mdash; <cite><a href="https://en.wikipedia.org/wiki/Al_Capone" target="_blank" rel="noopener">Al Capone</a></cite></blockquote>
+        <blockquote>"The music is about the sounds themselves, not who or what made them." &mdash; <cite><a href="https://www.edx.org/bio/stephen-whittington" target="_blank" rel="noopener">Stephen Whittington</a></cite></blockquote>
+        <blockquote>"In C, there's no magic. If you want something to be somewhere in memory, you have to put it there yourself." &mdash; <cite><a href="https://en.wikipedia.org/wiki/David_J._Malan" target="_blank" rel="noopener">David J. Malan</a></cite></blockquote>
+        <blockquote>"If the Human Brain Were So Simple That We Could Understand It, We Would Be So Simple That We Couldn't." &mdash; <cite><a href="https://en.wikipedia.org/wiki/Emerson_Pugh" target="_blank" rel="noopener">Emerson M. Pugh</a></cite></blockquote>
+        <blockquote>"You used to be one thing. Now, you're something else. We all have our own problems. Our own issues. Our own demons!" &mdash; <cite><a href="https://www.imdb.com/title/tt1270797/characters/nm0362766?ref_=tt_cl_t1" target="_blank" rel="noopener">Eddie Brock</a></cite></blockquote>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      elgx.me
+    </footer>
+
+  </div>
+
+  <script>
+    if (localStorage.getItem('mode') === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    function toggleMode() {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('mode', isDark ? 'dark' : 'light');
+    }
+
+    fetch('blog/index.json')
+      .then(r => r.json())
+      .then(articles => {
+        const list = document.getElementById('articles-list');
+        list.innerHTML = articles
+          .filter(a => a.title)
+          .map(a => {
+            const badge    = a.aiGenerated ? `<span class="ai-badge">${a.aiTool || 'AI'}</span>` : '';
+            const metaParts = [a.category, a.date, a.readTime].filter(Boolean).join(' &middot; ');
+            return `<a class="article-card" href="blog/${a.file}">
+              <div class="article-meta">${badge}${metaParts}</div>
+              <div class="article-title">${a.title}</div>
+              ${a.description ? `<p class="article-desc">${a.description}</p>` : ''}
+            </a>`;
+          })
+          .join('');
+      })
+      .catch(() => {});  // silent fail on file:// (use a local server for dev)
+  </script>
+</body>
+</html>
