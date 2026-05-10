@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Writing &mdash; Moustafa Elgammal</title>
+  <meta name="description" content="All articles by Moustafa Elgammal on engineering, leadership, and building things.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+  <button class="mode-btn" onclick="toggleMode()" aria-label="Toggle dark mode"></button>
+
+  <div class="site-wrap">
+
+    <header class="site-header">
+      <img class="avatar" src="../img/avatar.jpg" alt="Moustafa Elgammal" width="56" height="56">
+      <div>
+        <h1 class="site-name">Moustafa Elgammal</h1>
+        <p class="site-role">Software Developer &amp; Engineer</p>
+      </div>
+    </header>
+
+    <nav class="site-nav">
+      <a href="../index.html">&larr; Home</a>
+    </nav>
+
+    <hr class="divider">
+
+    <main>
+      <section class="section">
+
+        <div class="blog-index-header">
+          <h2 class="section-label">Writing</h2>
+          <span id="article-count" class="blog-index-count"></span>
+        </div>
+
+        <div id="filters" class="blog-filters"></div>
+
+        <div id="articles-list" class="articles-list">
+          <p style="color:var(--text-muted);font-size:0.85rem;">Loading&hellip;</p>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      elgx.me
+    </footer>
+
+  </div>
+
+  <script>
+    /* ── Dark mode ── */
+    if (localStorage.getItem('mode') === 'dark') {
+      document.body.classList.add('dark');
+    }
+    function toggleMode() {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('mode', isDark ? 'dark' : 'light');
+    }
+
+    /* ── State ── */
+    let allArticles = [];
+    let activeCategory = 'all';
+
+    /* ── Render article cards ── */
+    function renderArticles() {
+      const list    = document.getElementById('articles-list');
+      const countEl = document.getElementById('article-count');
+
+      const visible = activeCategory === 'all'
+        ? allArticles
+        : allArticles.filter(a => (a.category || '').toLowerCase() === activeCategory);
+
+      countEl.textContent = visible.length === 1
+        ? '1 article'
+        : `${visible.length} article${visible.length === 0 ? 's' : 's'}`;
+
+      if (visible.length === 0) {
+        list.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">No articles in this category.</p>';
+        return;
+      }
+
+      list.innerHTML = visible.map(a => {
+        const badge    = a.aiGenerated ? `<span class="ai-badge">${a.aiTool || 'AI'}</span>` : '';
+        const metaParts = [a.category, a.date, a.readTime].filter(Boolean).join(' &middot; ');
+        return `<a class="article-card" href="${a.file}">
+          <div class="article-meta">${badge}${metaParts}</div>
+          <div class="article-title">${a.title}</div>
+          ${a.description ? `<p class="article-desc">${a.description}</p>` : ''}
+        </a>`;
+      }).join('');
+    }
+
+    /* ── Build category filter pills ── */
+    function buildFilters(articles) {
+      const seen = new Set();
+      const categories = [];
+      articles.forEach(a => {
+        const key = (a.category || '').toLowerCase();
+        if (key && !seen.has(key)) { seen.add(key); categories.push(a.category); }
+      });
+
+      const filtersEl = document.getElementById('filters');
+
+      // Only show filters if there's more than one category
+      if (categories.length <= 1) { filtersEl.remove(); return; }
+
+      const all = [{ key: 'all', label: 'All' }]
+        .concat(categories.map(c => ({ key: c.toLowerCase(), label: c })));
+
+      filtersEl.innerHTML = all.map(({ key, label }) =>
+        `<button class="filter-btn${key === 'all' ? ' active' : ''}" data-cat="${key}">${label}</button>`
+      ).join('');
+
+      filtersEl.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        activeCategory = btn.dataset.cat;
+        filtersEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderArticles();
+      });
+    }
+
+    /* ── Fetch ── */
+    fetch('index.json?v=' + Date.now(), { cache: 'no-store' })
+      .then(r => r.json())
+      .then(articles => {
+        allArticles = articles.filter(a => a.title);
+        buildFilters(allArticles);
+        renderArticles();
+      })
+      .catch(() => {
+        document.getElementById('articles-list').innerHTML =
+          '<p style="color:var(--text-muted);font-size:0.85rem;">Could not load articles. Use a local server for dev (<code>npx serve .</code> from repo root).</p>';
+        document.getElementById('article-count').textContent = '';
+      });
+  </script>
+</body>
+</html>

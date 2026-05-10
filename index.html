@@ -50,7 +50,10 @@
       </section>
 
       <section id="writing" class="section">
-        <h2 class="section-label">Writing</h2>
+        <div class="blog-index-header">
+          <h2 class="section-label">Writing</h2>
+          <a href="blog/index.html" class="blog-index-count">All articles &rarr;</a>
+        </div>
         <div id="articles-list" class="articles-list"></div>
       </section>
 
@@ -97,7 +100,7 @@
       localStorage.setItem('mode', isDark ? 'dark' : 'light');
     }
 
-    fetch('blog/index.json')
+    fetch('blog/index.json?v=' + Date.now(), { cache: 'no-store' })
       .then(r => r.json())
       .then(articles => {
         const list = document.getElementById('articles-list');

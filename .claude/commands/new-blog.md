@@ -19,7 +19,7 @@ If `$ARGUMENTS` is empty, ask the user for:
 2. **Write** — Produce the full article content following the Writing Methodology below.
 3. **Assemble** — Wrap content in the HTML Template below, filling every placeholder.
 4. **Create file** — Write to `blog/<slug>.html`.
-5. **Scan** — Run `node scripts/scan-blogs.js` from the repo root to update `blog/index.json`.
+5. **Scan** — Run `bash scan-blogs.sh` (works from any directory) to update `blog/index.json`.
 6. **Report** — Confirm both files and show the article URL path.
 
 ---
@@ -377,5 +377,5 @@ After writing the file, verify before reporting done:
 - [ ] 2–3 `callout` blocks total
 - [ ] `final-cta` block present
 - [ ] `article-license-footer` present with correct year
-- [ ] `node scripts/scan-blogs.js` ran successfully
+- [ ] `bash scripts/scan-blogs.sh` ran successfully
 - [ ] `blog/index.json` updated (confirm article appears)

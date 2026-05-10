@@ -353,6 +353,60 @@ blockquote cite {
 
 .back-link:hover { color: var(--accent); }
 
+/* ── Blog index — section header row (label + live count) ── */
+.blog-index-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin: 0 0 1rem;
+}
+.blog-index-header .section-label {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.blog-index-count {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+a.blog-index-count { font-style: normal; font-weight: 700; }
+a.blog-index-count:hover { color: var(--accent); }
+
+/* ── Blog index — category filter pills ── */
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+.filter-btn {
+  font-family: var(--font);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  line-height: 1.6;
+}
+.filter-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.filter-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* ═══════════════════════════════════════════
    Blog article — shared component styles
    Used by every blog/<slug>.html page.

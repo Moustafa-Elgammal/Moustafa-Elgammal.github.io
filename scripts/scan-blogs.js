@@ -33,7 +33,11 @@ const files = fs.readdirSync(blogDir)
 
 const articles = files
   .map(file => {
-    const html = fs.readFileSync(path.join(blogDir, file), 'utf8');
+    const html    = fs.readFileSync(path.join(blogDir, file), 'utf8');
+    const dateIso = meta(html, 'blog:date-iso');
+    // Only treat files with a blog:date-iso meta tag as articles.
+    // This excludes listing pages like index.html.
+    if (!dateIso) return null;
     const aiRaw = meta(html, 'blog:ai-generated');
     return {
       file,
@@ -41,13 +45,14 @@ const articles = files
       description: meta(html, 'description'),
       category:    meta(html, 'blog:category'),
       date:        meta(html, 'blog:date'),
-      dateIso:     meta(html, 'blog:date-iso'),
+      dateIso,
       readTime:    meta(html, 'blog:readtime'),
       aiGenerated: aiRaw === 'true' ? true : undefined,
       aiTool:      meta(html, 'blog:ai-tool')  || undefined,
       license:     meta(html, 'blog:license')  || undefined,
     };
   })
+  .filter(Boolean)
   .sort((a, b) => {
     // newest first; fall back to filename order if no dateIso
     if (a.dateIso && b.dateIso) return b.dateIso.localeCompare(a.dateIso);
